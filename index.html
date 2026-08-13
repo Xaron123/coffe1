@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Любовь и Кофе — кофейня в Пскове</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-mark">
+        <svg viewBox="0 0 120 120" width="90" height="90">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".4"/>
+          <path d="M60 44 C 50 30, 30 34, 30 52 C 30 70, 60 88, 60 88 C 60 88, 90 70, 90 52 C 90 34, 70 30, 60 44 Z"
+                fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M46 60 C 46 66, 52 70, 60 70 C 68 70, 74 66, 74 60" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="preloader-name">Любовь <em>&</em> Кофе</div>
+      <div class="preloader-bar"><span></span></div>
+      <div class="preloader-caption">варим с любовью · с 2022</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="brand" href="#top" data-cursor="stick">
+        <span class="brand-mark">
+          <svg viewBox="0 0 40 40" width="28" height="28">
+            <path d="M20 14 C 16 8, 8 10, 8 17 C 8 25, 20 32, 20 32 C 20 32, 32 25, 32 17 C 32 10, 24 8, 20 14 Z"
+                  fill="none" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <span class="brand-name">Любовь <em>&</em> Кофе</span>
+      </a>
+      <nav class="nav">
+        <a href="#menu" data-cursor="hover">Меню</a>
+        <a href="#craft" data-cursor="hover">Крафт</a>
+        <a href="#signature" data-cursor="hover">Напитки</a>
+        <a href="#bakery" data-cursor="hover">Пекарня</a>
+        <a href="#contact" data-cursor="hover">Контакты</a>
+      </nav>
+      <div class="header-side">
+        <span class="dot"></span>
+        <span>Открыто · 9:00 – 22:00</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grain"></div>
+      <div class="hero-bg">
+        <div class="hero-blob b1"></div>
+        <div class="hero-blob b2"></div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="pill">Псков · Максима Горького 14/6</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="line" data-split>Любовь</span>
+            <span class="line amp"><em data-split>&</em></span>
+            <span class="line" data-split>Кофе</span>
+          </h1>
+          <p class="hero-lede">
+            Маленькая кофейня, где утро начинается с латте-арта, а вечер —
+            с вишнёвого матча-тоника. Мы обжариваем на <u>Rockets.coffee</u>
+            и печём с руками Юлии Фрей.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" data-cursor="hover">
+              <span>Смотреть меню</span>
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-ghost" data-cursor="hover">
+              <span>Как нас найти</span>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-item">
+              <div class="meta-num">4,5<em>/5</em></div>
+              <div class="meta-txt">рейтинг сообщества<br/>по 968 гостям</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-num">9–22</div>
+              <div class="meta-txt">каждый день,<br/>без выходных</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-num">'22</div>
+              <div class="meta-txt">варим кофе<br/>с любовью с 2022</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hv-card hv-main">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=80&auto=format&fit=crop" alt="Латте с сердцем"/>
+            <div class="hv-tag">
+              <span>сегодня в чашке</span>
+              <b>Латте на альтернативном молоке</b>
+            </div>
+          </div>
+          <div class="hv-card hv-small hv-a">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&q=80&auto=format&fit=crop" alt="Круассан"/>
+          </div>
+          <div class="hv-card hv-small hv-b">
+            <img src="https://images.unsplash.com/photo-1515442261605-65987783cb6a?w=500&q=80&auto=format&fit=crop" alt="Матча"/>
+          </div>
+          <div class="hv-badge">
+            <svg viewBox="0 0 200 200" width="140" height="140">
+              <defs>
+                <path id="circlepath" d="M 100,100 m -75,0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"/>
+              </defs>
+              <text font-family="Manrope" font-size="14" letter-spacing="4" fill="currentColor">
+                <textPath href="#circlepath">
+                  · СВЕЖАЯ ОБЖАРКА · СЕЗОННОЕ МЕНЮ · СВОЯ ПЕКАРНЯ ·
+                </textPath>
+              </text>
+              <circle cx="100" cy="100" r="8" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll">
+        <span>прокрути</span>
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div class="hero-marquee">
+        <div class="marquee-track">
+          <span>эспрессо</span><span>·</span>
+          <span>раф ванильный</span><span>·</span>
+          <span>вишнёвый матча-тоник</span><span>·</span>
+          <span>какао черничный йогурт</span><span>·</span>
+          <span>капучино</span><span>·</span>
+          <span>чай с облепихой</span><span>·</span>
+          <span>тарт вишнёвый</span><span>·</span>
+          <span>круассан с фисташкой</span><span>·</span>
+          <span>эспрессо</span><span>·</span>
+          <span>раф ванильный</span><span>·</span>
+          <span>вишнёвый матча-тоник</span><span>·</span>
+          <span>какао черничный йогурт</span><span>·</span>
+          <span>капучино</span><span>·</span>
+          <span>чай с облепихой</span><span>·</span>
+          <span>тарт вишнёвый</span><span>·</span>
+          <span>круассан с фисташкой</span><span>·</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- MANIFESTO — pinned scroll -->
+    <section class="manifesto" id="manifesto">
+      <div class="manifesto-inner">
+        <div class="manifesto-eyebrow">— манифест</div>
+        <h2 class="manifesto-text">
+          <span>Иногда,&nbsp;</span>
+          <span>чтобы описать&nbsp;</span>
+          <span class="hl">вкус,&nbsp;</span>
+          <span>не хватает слов.&nbsp;</span>
+          <span>В таком случае&nbsp;</span>
+          <span>остаётся только&nbsp;</span>
+          <span class="hl italic">пробовать.</span>
+        </h2>
+        <div class="manifesto-sign">— из первого поста кофейни, лето 2022</div>
+      </div>
+    </section>
+
+
+    <!-- SEASONAL MENU — horizontal scroll -->
+    <section class="menu" id="menu">
+      <div class="section-head">
+        <div class="section-eyebrow">01 · Сезонные новинки</div>
+        <h2 class="section-title">
+          <span data-split>Что</span> <span data-split>налить</span> <span data-split>этим</span> <span data-split>летом</span>
+        </h2>
+        <p class="section-lede">Четыре напитка, ради которых стоит заглянуть в июле. Готовим до конца сезона.</p>
+      </div>
+
+      <div class="menu-strip">
+        <div class="menu-track">
+          <article class="menu-card" data-tone="berry" data-cursor="hover">
+            <div class="menu-num">01</div>
+            <div class="menu-photo">
+              <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=900&q=80&auto=format&fit=crop" alt="Черничное какао"/>
+            </div>
+            <div class="menu-info">
+              <h3>Какао «черничный йогурт»</h3>
+              <p>Нежное айс-какао: сладость кокосового молока, свежесть черники и горчинка натурального какао.</p>
+              <div class="menu-foot"><span>айс · 350 мл</span><b>290 ₽</b></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-tone="cherry" data-cursor="hover">
+            <div class="menu-num">02</div>
+            <div class="menu-photo">
+              <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=900&q=80&auto=format&fit=crop" alt="Вишнёвый матча-тоник"/>
+            </div>
+            <div class="menu-info">
+              <h3>Вишнёвый матча-тоник</h3>
+              <p>Освежающий лимонад на биттер-тонике с вишнёвым джемом и голубой цветочной матчей.</p>
+              <div class="menu-foot"><span>айс · 400 мл</span><b>340 ₽</b></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-tone="pistachio" data-cursor="hover">
+            <div class="menu-num">03</div>
+            <div class="menu-photo">
+              <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=900&q=80&auto=format&fit=crop" alt="Раф фисташковый"/>
+            </div>
+            <div class="menu-info">
+              <h3>Раф фисташковый</h3>
+              <p>Тёплый раф на сливках с натуральной фисташковой пастой и щепоткой морской соли.</p>
+              <div class="menu-foot"><span>горячий · 300 мл</span><b>320 ₽</b></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-tone="honey" data-cursor="hover">
+            <div class="menu-num">04</div>
+            <div class="menu-photo">
+              <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=900&q=80&auto=format&fit=crop" alt="Медовый капучино"/>
+            </div>
+            <div class="menu-info">
+              <h3>Капучино на гречишном мёде</h3>
+              <p>Классика с обжаркой Rockets.coffee и локальным мёдом. Плотная пена, тёплое послевкусие.</p>
+              <div class="menu-foot"><span>горячий · 250 мл</span><b>260 ₽</b></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-tone="cream" data-cursor="hover">
+            <div class="menu-num">05</div>
+            <div class="menu-photo">
+              <img src="https://images.unsplash.com/photo-1600289031464-74d374b64991?w=900&q=80&auto=format&fit=crop" alt="Тарт вишнёвый"/>
+            </div>
+            <div class="menu-info">
+              <h3>Тарт с вишнёвым конфи</h3>
+              <p>Песочная основа, ванильный крем, кислая вишня — печёт наша мастерица Юлия Фрей.</p>
+              <div class="menu-foot"><span>десерт · 120 г</span><b>310 ₽</b></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CRAFT — pinned, big type + reveal list -->
+    <section class="craft" id="craft">
+      <div class="craft-sticky">
+        <div class="craft-grid">
+          <div class="craft-left">
+            <div class="section-eyebrow light">02 · Крафт</div>
+            <h2 class="craft-title">
+              <span data-split>Хороший</span><br/>
+              <span data-split>кофе</span> <span data-split>сварен</span><br/>
+              <em data-split>с</em> <em data-split>любовью</em>
+            </h2>
+            <p class="craft-lede">
+              Мы не гонимся за трендами — только за вкусом. Каждое утро калибруем помол, каждый вечер обнимаем гостей.
+            </p>
+          </div>
+          <ul class="craft-list">
+            <li>
+              <span class="ci">i</span>
+              <div>
+                <h4>Свежая обжарка Rockets.coffee</h4>
+                <p>Работаем на зерне с указанием даты обжарки. Никогда не старше 21 дня.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ci">ii</span>
+              <div>
+                <h4>Сезонные ягоды каждое утро</h4>
+                <p>Черника, вишня, облепиха — с рынка на Октябрьской. Джемы варим сами.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ci">iii</span>
+              <div>
+                <h4>Авторские сиропы</h4>
+                <p>Ванильный на бурбоне, солёная карамель, лавандовый с мёдом. Всё — без промышленных концентратов.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ci">iv</span>
+              <div>
+                <h4>Пекарня Юлии Фрей</h4>
+                <p>Пирожные, тарты и круассаны ручной работы. Партии небольшие, к вечеру часто заканчиваются.</p>
+              </div>
+            </li>
+            <li>
+              <span class="ci">v</span>
+              <div>
+                <h4>Альтернативное молоко без наценки</h4>
+                <p>Овсяное, кокосовое, миндальное — по цене обычного. Мы за то, чтобы вкусно было каждому.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SIGNATURE — showcase carousel -->
+    <section class="signature" id="signature">
+      <div class="section-head center">
+        <div class="section-eyebrow">03 · Фирменные напитки</div>
+        <h2 class="section-title">
+          <span data-split>Сделано</span> <em data-split>с</em> <span data-split>руками</span>
+        </h2>
+      </div>
+
+      <div class="signature-stage">
+        <div class="sig-side sig-left">
+          <button class="sig-item active" data-idx="0">Вишнёвый матча-тоник</button>
+          <button class="sig-item" data-idx="1">Черничное какао</button>
+          <button class="sig-item" data-idx="2">Раф фисташковый</button>
+        </div>
+
+        <div class="sig-stage-cup">
+          <div class="sig-cup-ring"></div>
+          <div class="sig-cup-wrap">
+            <img id="sig-img" src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=900&q=80&auto=format&fit=crop" alt=""/>
+          </div>
+          <div class="sig-cup-label">
+            <span>рецепт №</span><b id="sig-idx">01</b>
+          </div>
+        </div>
+
+        <div class="sig-side sig-right">
+          <div id="sig-recipe">
+            <div class="sig-name">Вишнёвый матча-тоник</div>
+            <div class="sig-desc">Освежающий лимонад на биттер-тонике с вишнёвым джемом и цветочной голубой матчей. Подаём с веточкой мяты и колотым льдом.</div>
+            <ul class="sig-list">
+              <li>биттер-тоник · 180 мл</li>
+              <li>вишнёвый джем · 2 ч.л.</li>
+              <li>голубая матча · 1 ч.л.</li>
+              <li>лёд, мята, долька лайма</li>
+            </ul>
+            <div class="sig-price">340 ₽</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- REVIEWS MARQUEE -->
+    <section class="reviews">
+      <div class="reviews-head">
+        <div class="section-eyebrow">04 · Отзывы</div>
+        <h2 class="reviews-title">
+          <span class="big">4,5</span>
+          <span class="stars">★★★★★</span>
+          <span class="txt">на основе <b>968</b> подписчиков и десятков отзывов</span>
+        </h2>
+      </div>
+      <div class="reviews-marquee">
+        <div class="reviews-track">
+          <div class="rev">
+            <p>«Заходила утром за раф-ванильным — ушла с двумя круассанами и хорошим настроением. Тут просто по-домашнему.»</p>
+            <span>— Оля, ПН</span>
+          </div>
+          <div class="rev">
+            <p>«Вишнёвый матча-тоник — это лучшее, что случилось этим летом с моими вечерами.»</p>
+            <span>— Алина</span>
+          </div>
+          <div class="rev">
+            <p>«Латте-арт, как в Питере, а цены псковские. Что ещё нужно.»</p>
+            <span>— Станислав</span>
+          </div>
+          <div class="rev">
+            <p>«Пирожные от Юлии — отдельный вид искусства. Тарт с вишней уносит.»</p>
+            <span>— Елена</span>
+          </div>
+          <div class="rev">
+            <p>«Приятные бариста, знают тебя по имени со второго раза. Мой офис теперь тут.»</p>
+            <span>— Ирина</span>
+          </div>
+          <div class="rev">
+            <p>«Черничное какао попробовала за компанию — теперь беру всегда. Взрослый вкус.»</p>
+            <span>— Ольга</span>
+          </div>
+          <!-- duplicate for seamless loop -->
+          <div class="rev">
+            <p>«Заходила утром за раф-ванильным — ушла с двумя круассанами и хорошим настроением.»</p>
+            <span>— Оля, ПН</span>
+          </div>
+          <div class="rev">
+            <p>«Вишнёвый матча-тоник — лучшее, что случилось этим летом с моими вечерами.»</p>
+            <span>— Алина</span>
+          </div>
+          <div class="rev">
+            <p>«Латте-арт, как в Питере, а цены псковские. Что ещё нужно.»</p>
+            <span>— Станислав</span>
+          </div>
+          <div class="rev">
+            <p>«Пирожные от Юлии — отдельный вид искусства.»</p>
+            <span>— Елена</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- BAKERY — parallax gallery -->
+    <section class="bakery" id="bakery">
+      <div class="bakery-head">
+        <div class="bak-left">
+          <div class="section-eyebrow">05 · Пекарня</div>
+          <h2 class="bakery-title">
+            <span data-split>Мастерская</span><br/>
+            <em data-split>Юлии</em> <em data-split>Фрей</em>
+          </h2>
+        </div>
+        <p class="bak-right">
+          Наши десерты — маленькие партии, каждая по-настоящему ручной работы. Мы не морозим, не заготавливаем впрок. Что осталось к вечеру — то и есть.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <figure class="g g1" data-speed="0.85">
+          <img src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?w=700&q=80&auto=format&fit=crop" alt=""/>
+          <figcaption>эклер · соль-карамель</figcaption>
+        </figure>
+        <figure class="g g2" data-speed="1.1">
+          <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=700&q=80&auto=format&fit=crop" alt=""/>
+          <figcaption>тарт · вишня</figcaption>
+        </figure>
+        <figure class="g g3" data-speed="0.92">
+          <img src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=700&q=80&auto=format&fit=crop" alt=""/>
+          <figcaption>чизкейк · маракуйя</figcaption>
+        </figure>
+        <figure class="g g4" data-speed="1.18">
+          <img src="https://images.unsplash.com/photo-1568827999250-3f6afff96e66?w=700&q=80&auto=format&fit=crop" alt=""/>
+          <figcaption>муссовый · малина</figcaption>
+        </figure>
+        <figure class="g g5" data-speed="0.95">
+          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=700&q=80&auto=format&fit=crop" alt=""/>
+          <figcaption>круассан · миндаль</figcaption>
+        </figure>
+        <figure class="g g6" data-speed="1.05">
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=700&q=80&auto=format&fit=crop" alt=""/>
+          <figcaption>капкейк · матча</figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="section-eyebrow light">06 · Как найти</div>
+          <h2 class="contact-title">
+            <span data-split>Заглядывай</span><br/>
+            <em data-split>без</em> <em data-split>повода</em>
+          </h2>
+
+          <div class="contact-block">
+            <div class="cb-label">Адрес</div>
+            <div class="cb-value">г. Псков, ул. Максима Горького, 14/6</div>
+          </div>
+          <div class="contact-block">
+            <div class="cb-label">Часы</div>
+            <div class="cb-value">Пн — Вс · 9:00 – 22:00 <span class="dot green"></span> открыто сейчас</div>
+          </div>
+          <div class="contact-block">
+            <div class="cb-label">Связь</div>
+            <div class="cb-value">
+              <a data-cursor="hover">t.me/lovveandcoffee</a><br/>
+              <a data-cursor="hover">lubovkofeevna@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-cta">
+            <a class="btn btn-primary dark" data-cursor="hover">
+              <span>Написать в Telegram</span>
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <div class="map">
+            <div class="map-grid"></div>
+            <div class="map-street s1"></div>
+            <div class="map-street s2"></div>
+            <div class="map-street s3"></div>
+            <div class="map-river"></div>
+            <div class="map-pin">
+              <div class="pin-ring"></div>
+              <div class="pin-ring d"></div>
+              <div class="pin-dot"></div>
+              <div class="pin-tag">
+                <span>вы здесь</span>
+                <b>Любовь и Кофе</b>
+              </div>
+            </div>
+            <div class="map-legend">
+              <span>ПСКОВ · центр</span>
+              <span>57.8194° N, 28.3306° E</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="section-eyebrow light">до встречи</div>
+        <div class="footer-note">
+          Спасибо, что читаешь до конца. Приходи с другом — угостим вторым напитком.
+        </div>
+      </div>
+      <div class="footer-links">
+        <a data-cursor="hover">Меню</a>
+        <a data-cursor="hover">Крафт</a>
+        <a data-cursor="hover">Пекарня</a>
+        <a data-cursor="hover">Telegram</a>
+        <a data-cursor="hover">VK</a>
+      </div>
+    </div>
+    <div class="footer-mega">
+      <span>Любовь</span><em>&</em><span>Кофе</span>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 · кофейня в Пскове</span>
+      <span>ул. Максима Горького 14/6</span>
+      <span>сделано с ❤ и эспрессо</span>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
