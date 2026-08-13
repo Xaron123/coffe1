@@ -33,17 +33,27 @@ function splitWords(el) {
 }
 
 /* ---------- preloader ---------- */
-function runPreloader(onDone) {
+function runPreloader() {
   const pl = q('#preloader');
-  const tl = gsap.timeline({ onComplete: onDone });
+  if (!pl) return;
+  let dismissed = false;
+  const dismiss = () => {
+    if (dismissed) return;
+    dismissed = true;
+    pl.style.display = 'none';
+  };
 
+  const tl = gsap.timeline({ onComplete: dismiss });
   tl.to('.preloader-mark', { opacity: 1, duration: .5, ease: 'power2.out' })
     .to('.preloader-name', { opacity: 1, y: 0, duration: .7, ease: 'power3.out' }, '-=.2')
     .to('.preloader-caption', { opacity: 1, duration: .5 }, '-=.4')
     .to('.preloader-bar span', { scaleX: 1, duration: 1.4, ease: 'power2.inOut' }, '-=.5')
     .to('.preloader-inner', { y: -20, opacity: 0, duration: .5, ease: 'power2.in' }, '+=.15')
-    .to(pl, { yPercent: -100, duration: .9, ease: 'power4.inOut' })
-    .set(pl, { display: 'none' });
+    .to(pl, { yPercent: -100, duration: .9, ease: 'power4.inOut' });
+
+  // Safety net: if the tab was hidden and GSAP's ticker was throttled,
+  // this guarantees the preloader still disappears.
+  setTimeout(dismiss, 5000);
 }
 
 /* ---------- custom cursor ---------- */
@@ -278,21 +288,29 @@ function initFooter() {
 }
 
 /* ---------- boot ---------- */
-window.addEventListener('load', () => {
+function boot() {
   gsap.set('.preloader-name', { y: 20 });
   gsap.set('.preloader-caption', { y: 10 });
 
-  runPreloader(() => {
-    initCursor();
-    initHeader();
-    initHero();
-    initManifesto();
-    initSectionTitles();
-    initMenu();
-    initCraft();
-    initSignature();
-    initGallery();
-    initFooter();
-    ScrollTrigger.refresh();
-  });
-});
+  // Init content immediately — preloader is decoration, not a gate
+  initCursor();
+  initHeader();
+  initHero();
+  initManifesto();
+  initSectionTitles();
+  initMenu();
+  initCraft();
+  initSignature();
+  initGallery();
+  initFooter();
+  ScrollTrigger.refresh();
+
+  runPreloader();
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(boot, 0);
+} else {
+  window.addEventListener('DOMContentLoaded', boot, { once: true });
+  window.addEventListener('load', boot, { once: true });
+}

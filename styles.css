@@ -81,7 +81,6 @@ body::after {
   width: 8px; height: 8px;
   background: #F4E9D2;
   border-radius: 50%;
-  transition: transform .12s ease;
 }
 .cursor-follower {
   width: 36px; height: 36px;
@@ -328,14 +327,17 @@ body.cursor-hover .cursor-follower {
   letter-spacing: -.03em;
   margin-bottom: 36px;
 }
-.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line { display: block; overflow: hidden; padding: 0.05em 0 0.05em; }
 .hero-title .amp {
   font-family: var(--script);
   color: var(--cherry);
   font-size: .8em;
-  padding-left: 14px;
+  padding: 0.2em 0 0.25em 14px;
   transform: translateY(-.05em);
+  overflow: visible;
+  line-height: 1.15;
 }
+.hero-title .amp .w { overflow: visible !important; }
 
 .hero-lede {
   max-width: 46ch;
