@@ -104,15 +104,6 @@ body.cursor-hover .cursor-follower {
   color: var(--cream);
   display: grid; place-items: center;
 }
-/* Safety net: if JS fails to load entirely, this hides the preloader
-   after ~6s so the user is never stuck on a blank dark screen. */
-.preloader-safe {
-  animation: preloader-safety 6s ease-in forwards;
-}
-@keyframes preloader-safety {
-  0%, 92%   { opacity: 1; visibility: visible; }
-  100%      { opacity: 0; visibility: hidden; pointer-events: none; }
-}
 .preloader-inner { text-align: center; }
 .preloader-mark { color: var(--cream); margin-bottom: 24px; opacity: 0; }
 .preloader-name {
@@ -432,7 +423,6 @@ body.cursor-hover .cursor-follower {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 30px 60px -20px rgba(60,30,10,.35);
-  background: linear-gradient(135deg, var(--caramel), var(--cherry));
 }
 .hv-card img { width: 100%; height: 100%; object-fit: cover; }
 .hv-main {
@@ -560,11 +550,9 @@ body.cursor-hover .cursor-follower {
 }
 .manifesto-text span {
   display: inline;
+  opacity: .18;
   transition: opacity .3s;
 }
-/* Only dim them when JS-driven scroll reveal will animate them back in.
-   Without JS, spans stay fully readable. */
-html.js-anim .manifesto-text span { opacity: .18; }
 .manifesto-text .hl { color: var(--cherry); }
 .manifesto-text .italic { font-style: italic; font-family: var(--serif); }
 .manifesto-sign {
@@ -633,7 +621,6 @@ html.js-anim .manifesto-text span { opacity: .18; }
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, var(--cream-2), var(--caramel));
 }
 .menu-photo img {
   width: 100%; height: 100%;
@@ -720,6 +707,8 @@ html.js-anim .manifesto-text span { opacity: .18; }
   padding: 32px 0;
   border-top: 1px solid rgba(241,231,211,.16);
   align-items: start;
+  opacity: 0;
+  transform: translateY(28px);
 }
 .craft-list li:last-child { border-bottom: 1px solid rgba(241,231,211,.16); }
 .ci {
@@ -812,7 +801,6 @@ html.js-anim .manifesto-text span { opacity: .18; }
   box-shadow: 0 40px 80px -20px rgba(60,30,10,.4);
   position: relative;
   z-index: 2;
-  background: linear-gradient(135deg, var(--caramel), var(--cherry));
 }
 .sig-cup-wrap img { width: 100%; height: 100%; object-fit: cover; }
 .sig-cup-label {
@@ -992,7 +980,6 @@ html.js-anim .manifesto-text span { opacity: .18; }
   border-radius: 16px;
   position: relative;
   will-change: transform;
-  background: linear-gradient(135deg, var(--cream-2), var(--caramel));
 }
 .g img {
   width: 100%; height: 100%;
