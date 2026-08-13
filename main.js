@@ -289,6 +289,10 @@ function initFooter() {
 
 /* ---------- boot ---------- */
 function boot() {
+  // JS is alive — take over from the CSS safety animation
+  const pl = document.getElementById('preloader');
+  if (pl) pl.classList.remove('preloader-safe');
+
   gsap.set('.preloader-name', { y: 20 });
   gsap.set('.preloader-caption', { y: 10 });
 
