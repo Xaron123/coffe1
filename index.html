@@ -19,34 +19,23 @@
   <script>
     (function () {
       var revealed = false;
-
-      // Only touch anything if GSAP is clearly not doing its job.
-      // If the ticker is running, animations play normally — do nothing.
-      function gsapAlive() {
-        return !!(window.gsap && window.gsap.ticker && window.gsap.ticker.time > 0);
-      }
-
       function reveal() {
         if (revealed) return;
-        if (gsapAlive()) { revealed = true; return; } // GSAP is fine, don't interfere
         revealed = true;
         try {
-          // Kill any scroll-driven animations so they can't re-hide elements
-          // as the user scrolls past their triggers.
-          if (window.ScrollTrigger) {
-            try {
-              ScrollTrigger.getAll().forEach(function (st) {
-                try {
-                  if (st.animation) st.animation.kill();
-                  st.kill();
-                } catch (_) {}
-              });
-            } catch (_) {}
-          }
+          // If GSAP loaded, fast-forward every animation to its end state
           if (window.gsap) {
-            try { gsap.globalTimeline.getChildren(true, true, false).forEach(function (t) { try { t.kill(); } catch (_) {} }); } catch (_) {}
+            try { gsap.globalTimeline.progress(1); } catch (_) {}
+            if (window.ScrollTrigger) {
+              try {
+                ScrollTrigger.getAll().forEach(function (st) {
+                  if (st.animation) { try { st.animation.progress(1); } catch (_) {} }
+                });
+              } catch (_) {}
+            }
           }
           // Strip any inline hidden state left behind by gsap.from().
+          // Anything with inline transform starting with matrix() came from GSAP.
           document.querySelectorAll('body *').forEach(function (el) {
             var s = el.style;
             if (s.opacity !== '' && parseFloat(s.opacity) < 1) s.opacity = '';
@@ -55,25 +44,26 @@
               s.transform = '';
             }
           });
-          // Drop CSS-level dimming (manifesto etc.)
+          // Any element whose CSS keeps it dimmed (e.g. `.js-anim .foo { opacity: .18 }`)
+          // needs the veil dropped too.
           document.documentElement.classList.remove('js-anim');
+          // Hide the preloader for good
           var pl = document.getElementById('preloader');
           if (pl) { pl.style.display = 'none'; }
         } catch (_) {}
       }
-
-      // Fires after 3s. If GSAP is running normally, this is a no-op.
+      // Trigger once, 3 seconds after page starts loading
       setTimeout(reveal, 3000);
-      // If the tab was backgrounded and later focused, re-check.
+      // Also trigger the moment the tab becomes visible again after being hidden
       document.addEventListener('visibilitychange', function () {
-        if (!document.hidden) setTimeout(reveal, 800);
+        if (!document.hidden) setTimeout(reveal, 100);
       });
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <noscript><style>#preloader{display:none!important}</style></noscript>
 </head>
 <body>
@@ -611,19 +601,10 @@
     <div class="footer-mega">
       <span>Любовь</span><em>&</em><span>Кофе</span>
     </div>
-
-    <div class="footer-sig">
-      <span class="sig-line"></span>
-      <span class="sig-txt">сварено с любовью</span>
-      <span class="sig-heart" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z" fill="currentColor"/></svg>
-      </span>
-      <span class="sig-line"></span>
-    </div>
-
     <div class="footer-bottom">
-      <span class="fb-l">© 2026 · Любовь и Кофе</span>
-      <span class="fb-r">Псков · ул. Максима Горького 14/6</span>
+      <span>© 2026 · кофейня в Пскове</span>
+      <span>ул. Максима Горького 14/6</span>
+      <span>сделано с ❤ и эспрессо</span>
     </div>
   </footer>
 
@@ -632,6 +613,6 @@
   <script>window.gsap || document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"><\/script>');</script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script>window.ScrollTrigger || document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"><\/script>');</script>
-  <script src="main.js?v=8"></script>
+  <script src="main.js?v=7"></script>
 </body>
 </html>
