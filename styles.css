@@ -560,9 +560,11 @@ body.cursor-hover .cursor-follower {
 }
 .manifesto-text span {
   display: inline;
-  opacity: .18;
   transition: opacity .3s;
 }
+/* Only dim them when JS-driven scroll reveal will animate them back in.
+   Without JS, spans stay fully readable. */
+html.js-anim .manifesto-text span { opacity: .18; }
 .manifesto-text .hl { color: var(--cherry); }
 .manifesto-text .italic { font-style: italic; font-family: var(--serif); }
 .manifesto-sign {
@@ -718,8 +720,6 @@ body.cursor-hover .cursor-follower {
   padding: 32px 0;
   border-top: 1px solid rgba(241,231,211,.16);
   align-items: start;
-  opacity: 0;
-  transform: translateY(28px);
 }
 .craft-list li:last-child { border-bottom: 1px solid rgba(241,231,211,.16); }
 .ci {

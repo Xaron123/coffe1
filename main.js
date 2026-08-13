@@ -147,6 +147,10 @@ function initManifesto() {
   const spans = qq('.manifesto-text > span');
   if (!section || !spans.length) return;
 
+  // Dim first — CSS keeps them at full opacity by default so the
+  // page stays readable if JS never runs.
+  gsap.set(spans, { opacity: 0.18 });
+
   gsap.to(spans, {
     opacity: 1,
     stagger: 1,
@@ -192,8 +196,8 @@ function initMenu() {
 /* ---------- craft list reveal ---------- */
 function initCraft() {
   const items = qq('.craft-list li');
-  gsap.to(items, {
-    opacity: 1, y: 0,
+  gsap.from(items, {
+    opacity: 0, y: 28,
     duration: .9, ease: 'power3.out', stagger: .14,
     scrollTrigger: { trigger: '.craft-list', start: 'top 78%' }
   });
@@ -289,9 +293,21 @@ function initFooter() {
 
 /* ---------- boot ---------- */
 function boot() {
-  // JS is alive — take over from the CSS safety animation
+  // JS is alive — take over from the CSS safety animation and mark html
+  // so styles gated by `.js-anim` (e.g. dimmed manifesto words) apply.
   const pl = document.getElementById('preloader');
   if (pl) pl.classList.remove('preloader-safe');
+  document.documentElement.classList.add('js-anim');
+
+  // If the tab loaded hidden, GSAP's ticker is throttled/paused and
+  // `gsap.from()` calls would leave elements stuck at opacity: 0 until
+  // the tab is focused. Skip the entrance animations in that case — the
+  // fail-safe watchdog in index.html will also clean up any residue.
+  if (document.hidden) {
+    if (pl) pl.style.display = 'none';
+    document.documentElement.classList.remove('js-anim');
+    return;
+  }
 
   gsap.set('.preloader-name', { y: 20 });
   gsap.set('.preloader-caption', { y: 10 });

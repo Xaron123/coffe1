@@ -4,10 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Любовь и Кофе — кофейня в Пскове</title>
+
+  <!-- ================================================================
+       FAIL-SAFE reveal watchdog.
+       Root cause we're guarding against: GSAP.from() applies its "from"
+       state (opacity: 0, translated) IMMEDIATELY via inline styles. If
+       the tab loads while hidden/backgrounded, browsers throttle
+       requestAnimationFrame, GSAP's ticker never fires, and elements
+       stay invisible forever.
+       This script runs unconditionally after 3s and strips any inline
+       "hidden" styles so nothing can be left stuck. It also nukes the
+       preloader, no matter what.
+       ================================================================ -->
+  <script>
+    (function () {
+      var revealed = false;
+      function reveal() {
+        if (revealed) return;
+        revealed = true;
+        try {
+          // If GSAP loaded, fast-forward every animation to its end state
+          if (window.gsap) {
+            try { gsap.globalTimeline.progress(1); } catch (_) {}
+            if (window.ScrollTrigger) {
+              try {
+                ScrollTrigger.getAll().forEach(function (st) {
+                  if (st.animation) { try { st.animation.progress(1); } catch (_) {} }
+                });
+              } catch (_) {}
+            }
+          }
+          // Strip any inline hidden state left behind by gsap.from().
+          // Anything with inline transform starting with matrix() came from GSAP.
+          document.querySelectorAll('body *').forEach(function (el) {
+            var s = el.style;
+            if (s.opacity !== '' && parseFloat(s.opacity) < 1) s.opacity = '';
+            if (s.visibility === 'hidden') s.visibility = '';
+            if (s.transform && (s.transform === 'none' || s.transform.indexOf('matrix') === 0 || /translate|scale|rotate/.test(s.transform))) {
+              s.transform = '';
+            }
+          });
+          // Any element whose CSS keeps it dimmed (e.g. `.js-anim .foo { opacity: .18 }`)
+          // needs the veil dropped too.
+          document.documentElement.classList.remove('js-anim');
+          // Hide the preloader for good
+          var pl = document.getElementById('preloader');
+          if (pl) { pl.style.display = 'none'; }
+        } catch (_) {}
+      }
+      // Trigger once, 3 seconds after page starts loading
+      setTimeout(reveal, 3000);
+      // Also trigger the moment the tab becomes visible again after being hidden
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) setTimeout(reveal, 100);
+      });
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <noscript><style>#preloader{display:none!important}</style></noscript>
 </head>
 <body>
@@ -557,6 +613,6 @@
   <script>window.gsap || document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"><\/script>');</script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script>window.ScrollTrigger || document.write('<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"><\/script>');</script>
-  <script src="main.js?v=5"></script>
+  <script src="main.js?v=7"></script>
 </body>
 </html>
